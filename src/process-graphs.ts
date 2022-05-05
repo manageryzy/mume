@@ -163,13 +163,11 @@ export async function processGraphs(
     let displayPNGFilePath;
     if (useRelativeFilePath) {
       displayPNGFilePath =
-        path.relative(fileDirectoryPath, pngFilePath) + "?" + Math.random();
+        path.relative(fileDirectoryPath, pngFilePath);
     } else {
       displayPNGFilePath =
         "/" +
-        path.relative(projectDirectoryPath, pngFilePath) +
-        "?" +
-        Math.random();
+        path.relative(projectDirectoryPath, pngFilePath);
     }
     displayPNGFilePath = displayPNGFilePath.replace(/\\/g, "/"); // fix windows path error.
 
