@@ -162,12 +162,10 @@ export async function processGraphs(
     await svgElementToPNGFile(svg, pngFilePath, imageMagickPath);
     let displayPNGFilePath;
     if (useRelativeFilePath) {
-      displayPNGFilePath =
-        path.relative(fileDirectoryPath, pngFilePath);
+      displayPNGFilePath = path.relative(fileDirectoryPath, pngFilePath);
     } else {
       displayPNGFilePath =
-        "/" +
-        path.relative(projectDirectoryPath, pngFilePath);
+        "/" + path.relative(projectDirectoryPath, pngFilePath);
     }
     displayPNGFilePath = displayPNGFilePath.replace(/\\/g, "/"); // fix windows path error.
 
@@ -314,10 +312,7 @@ export async function processGraphs(
             path.relative(fileDirectoryPath, pngFilePath) + "?" + Math.random();
         } else {
           displayPNGFilePath =
-            "/" +
-            path.relative(projectDirectoryPath, pngFilePath) +
-            "?" +
-            Math.random();
+            "/" + path.relative(projectDirectoryPath, pngFilePath);
         }
         clearCodeBlock(lines, start, end);
 
