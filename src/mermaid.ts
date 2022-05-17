@@ -16,13 +16,35 @@ export async function mermaidToPNG(
     suffix: ".mmd",
   });
   await utility.write(info.fd, mermaidCode);
+
+  const config = await utility.tempOpen({
+    prefix: "mermaid",
+    suffix: ".json",
+  });
+  await config.write(
+    info.fd,
+    `
+{
+  "args": ["--no-sandbox"]
+}`,
+  );
+
   if (!themeName) {
     themeName = "null";
   }
   try {
     await utility.execFile(
       "mmdc",
-      ["--theme", themeName, "--input", info.path, "--output", pngFilePath],
+      [
+        "--theme",
+        themeName,
+        "--input",
+        info.path,
+        "--output",
+        pngFilePath,
+        "-p",
+        config.path,
+      ],
       {
         shell: true,
         cwd: projectDirectoryPath,
