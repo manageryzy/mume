@@ -21,8 +21,8 @@ export async function mermaidToPNG(
     prefix: "mermaid",
     suffix: ".json",
   });
-  await config.write(
-    info.fd,
+  await utility.write(
+    config.fd,
     `
 {
   "args": ["--no-sandbox"]
